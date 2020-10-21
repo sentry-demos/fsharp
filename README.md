@@ -1,6 +1,7 @@
 # Sentry F# Demo
 
 This is a simple console application that demonstrates how you can add Sentry to your applications written in F#.
+The current Sentry SDK supports any .NET application compatible with .NET Standard 2.0, which includes .NET Core 2.0+, .NET Framework 4.6.1+, Mono 5.4+, Xamarin.iOS 10.14+, Xamarin.Mac 3.8+, Xamarin.Android 8.0+, UWP 10.0.16299+, Unity 2018.1+.
 
 - To install Sentry, you can use [NuGet](https://www.nuget.org/packages/Sentry):
 
@@ -37,6 +38,7 @@ Please take a look at `Program.fs` for a more in-depth overview into Sentry's fe
 
 To run the demo, take the following steps:
 
+0. Make sure that the latest [.NET SDK](https://dotnet.microsoft.com/download) is installed.
 1. Go into `Program.fs` and change the `SentrySdk.Init` call to use your own DSN (change the value after `o.Dsn <- ...`).
 2. Build and run the demo with `dotnet run -c Release` (or use your IDE).
 3. You should see the following debug output in the console:
