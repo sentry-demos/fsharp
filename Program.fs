@@ -3,6 +3,8 @@ open System.Net.Http
 open System.Xml.Xsl
 open Sentry
 
+// Some operation that may fail with an exception.
+// Sentry SDK will pick up unhandled exceptions automatically.
 let performDangerousOperation () = raise <| Exception("Expected exception in Sentry F# Demo."); ()
 
 [<EntryPoint>]
@@ -65,15 +67,11 @@ let main _ =
     // *---- Usage
     // -----------
 
-    // Invoke some code that may trigger an exception.
-    // Unhandled exceptions are automatically collected by Sentry.
-    performDangerousOperation ()
+    // Optional: add breadcrumb to the next event.
+    SentrySdk.AddBreadcrumb ("Checkout Page")
 
     // Capture an exception directly.
     SentrySdk.CaptureException <| Exception ("Uh oh.") |> ignore
-
-    // Optional: add breadcrumb to the next event.
-    SentrySdk.AddBreadcrumb ("Checkout Page")
 
     // Optional: configure event scope.
     SentrySdk.WithScope (fun s ->
@@ -87,5 +85,9 @@ let main _ =
 
     // Optional: manually flush the event queue with a timeout.
     SentrySdk.FlushAsync (TimeSpan.FromSeconds 10.0) |> Async.AwaitTask |> Async.RunSynchronously
+
+    // Invoke some code that may trigger an exception.
+    // Unhandled exceptions are automatically collected by Sentry.
+    performDangerousOperation ()
 
     0
