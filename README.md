@@ -2,13 +2,13 @@
 
 This is a simple console application that demonstrates how you can add Sentry to your applications written in F#.
 
-To install Sentry, you can use NuGet:
+- To install Sentry, you can use [NuGet](https://www.nuget.org/packages/Sentry):
 
 ```bash
 dotnet add package Sentry
 ```
 
-...or Paket:
+...or [Paket](https://fsprojects.github.io/Paket):
 
 ```bash
 paket add Sentry
@@ -20,7 +20,7 @@ paket add Sentry
 <PackageReference Include="Sentry" Version="3.0.0" />
 ```
 
-In order to integrate with Sentry, at a minimum, you need to initialize the SDK with your project's DSN:
+- In order to integrate with Sentry, at a minimum, you need to initialize the SDK with your project's DSN:
 
 ```fsharp
 open Sentry
@@ -37,7 +37,7 @@ Please take a look at `Program.fs` for a more in-depth overview into Sentry's fe
 
 To run the demo, take the following steps:
 
-1. Go into `Program.fs` and change the `SentrySdk.Init` call to use your own DSN.
+1. Go into `Program.fs` and change the `SentrySdk.Init` call to use your own DSN (change the value after `o.Dsn <- ...`).
 2. Build and run the demo with `dotnet run -c Release` (or use your IDE).
 3. You should see the following debug output in the console:
 
@@ -96,7 +96,7 @@ Unhandled exception. System.Exception: Expected exception in Sentry F# Demo.
 
 ![Output on the Sentry portal](.assets/sentry-website-output.png)
 
-5. You can inspect individual events in more detail:
+5. You can then inspect individual events in more detail:
 
 ![Event details 1](.assets/sentry-website-event-1.png)
 
